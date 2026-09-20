@@ -1,0 +1,2440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administração | Gran Pizza</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         TELA DE LOGIN
+    ========================== -->
+    <section id="telaLogin" class="login-screen">
+
+        <div class="login-card">
+
+            <div class="login-brand">
+                <img src="../logo.jpeg.jpeg" alt="Gran Pizza Logo" class="login-logo">
+
+                <p>Painel administrativo</p>
+            </div>
+
+            <form id="formLogin">
+
+                <div class="campo">
+                    <label for="loginUsuario">
+                        Usuário
+                    </label>
+
+                    <input
+                        type="text"
+                        id="loginUsuario"
+                        placeholder="Digite seu usuário"
+                        autocomplete="username"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="loginSenha">
+                        Senha
+                    </label>
+
+                    <input
+                        type="password"
+                        id="loginSenha"
+                        placeholder="Digite sua senha"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                <p id="mensagemLogin" class="mensagem-login"></p>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary btn-full"
+                >
+                    Entrar no painel
+                </button>
+
+            </form>
+
+            <a href="../index.html" class="voltar-loja">
+                ← Voltar para a loja
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PAINEL ADMINISTRATIVO
+    ========================== -->
+    <div id="painelAdmin" class="admin-app hidden">
+
+        <!-- =========================
+             SIDEBAR
+        ========================== -->
+        <aside id="sidebarAdmin" class="sidebar">
+
+            <div class="sidebar-header">
+
+                <div class="admin-logo">
+                    <img src="../logo.jpeg.jpeg" alt="Gran Pizza Logo">
+
+                    <div>
+                        <strong>Gran Pizza</strong>
+                        <span>Administração</span>
+                    </div>
+                </div>
+
+                <button
+                    type="button"
+                    id="btnFecharSidebar"
+                    class="btn-icon mobile-only"
+                    aria-label="Fechar menu"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <nav class="admin-nav">
+
+                <button
+                    type="button"
+                    class="nav-item active"
+                    data-secao="dashboard"
+                >
+                    <span>📊</span>
+                    <span>Dashboard</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="nav-item"
+                    data-secao="relatorios"
+                >
+                    <span>📈</span>
+                    <span>Relatórios</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="nav-item"
+                    data-secao="pedidos"
+                >
+                    <span>🧾</span>
+                    <span>Pedidos</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="nav-item"
+                    data-secao="produtos"
+                >
+                    <span>🍕</span>
+                    <span>Produtos</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="nav-item"
+                    data-secao="categorias"
+                >
+                    <span>📂</span>
+                    <span>Categorias</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="nav-item"
+                    data-secao="cupons"
+                >
+                    <span>🎟️</span>
+                    <span>Cupons</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="nav-item"
+                    data-secao="galeria"
+                >
+                    <span>🖼️</span>
+                    <span>Galeria</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="nav-item"
+                    data-secao="avaliacoes"
+                >
+                    <span>⭐</span>
+                    <span>Avaliações</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="nav-item"
+                    data-secao="fidelidade"
+                >
+                    <span>🍕</span>
+                    <span>Fidelidade</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="nav-item"
+                    data-secao="configuracoes"
+                >
+                    <span>⚙️</span>
+                    <span>Configurações</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="nav-item"
+                    data-secao="backup"
+                >
+                    <span>💾</span>
+                    <span>Backup</span>
+                </button>
+
+            </nav>
+
+
+            <div class="sidebar-footer">
+
+                <a
+                    href="../index.html"
+                    target="_blank"
+                    class="btn-sidebar"
+                >
+                    👁️ Ver loja
+                </a>
+
+                <button
+                    type="button"
+                    id="btnLogout"
+                    class="btn-sidebar btn-logout"
+                >
+                    🚪 Sair
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =========================
+             CONTEÚDO PRINCIPAL
+        ========================== -->
+        <main class="admin-main">
+
+            <!-- HEADER -->
+            <header class="admin-header">
+
+                <button
+                    type="button"
+                    id="btnAbrirSidebar"
+                    class="btn-icon mobile-only"
+                    aria-label="Abrir menu"
+                >
+                    ☰
+                </button>
+
+                <div class="admin-header-brand">
+                    <img src="../logo.jpeg.jpeg" alt="Gran Pizza Logo" class="admin-logo-small">
+                </div>
+
+                <div class="header-title">
+
+                    <h1 id="tituloSecao">
+                        Dashboard
+                    </h1>
+
+                    <p id="subtituloSecao">
+                        Visão geral da sua pizzaria
+                    </p>
+
+                </div>
+
+                <div class="header-actions">
+
+                    <span
+                        id="statusLojaAdmin"
+                        class="status-loja-admin"
+                    >
+                        ● Loja
+                    </span>
+
+                    <a
+                        href="../index.html"
+                        target="_blank"
+                        class="btn btn-secondary"
+                    >
+                        Ver loja
+                    </a>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================
+                 DASHBOARD
+            ========================== -->
+            <section
+                id="secaoDashboard"
+                class="admin-section active"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Visão geral</h2>
+
+                        <p>
+                            Acompanhe o desempenho da Gran Pizza.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        data-secao="pedidos"
+                    >
+                        Ver pedidos
+                    </button>
+
+                </div>
+
+
+                <div class="stats-grid">
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon">
+                            🧾
+                        </div>
+
+                        <div>
+                            <span>Total de pedidos</span>
+
+                            <strong id="dashboardTotalPedidos">
+                                0
+                            </strong>
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon">
+                            💰
+                        </div>
+
+                        <div>
+                            <span>Faturamento</span>
+
+                            <strong id="dashboardFaturamento">
+                                R$ 0,00
+                            </strong>
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon">
+                            🍕
+                        </div>
+
+                        <div>
+                            <span>Produtos</span>
+
+                            <strong id="dashboardTotalProdutos">
+                                0
+                            </strong>
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <div class="stat-icon">
+                            📦
+                        </div>
+
+                        <div>
+                            <span>Pedidos pendentes</span>
+
+                            <strong id="dashboardPedidosPendentes">
+                                0
+                            </strong>
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <div class="dashboard-grid">
+
+                    <div class="admin-card">
+
+                        <div class="card-header">
+
+                            <div>
+                                <h3>Pedidos recentes</h3>
+
+                                <p>
+                                    Últimos pedidos recebidos
+                                </p>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="btn btn-small btn-secondary"
+                                data-secao="pedidos"
+                            >
+                                Ver todos
+                            </button>
+
+                        </div>
+
+                        <div
+                            id="dashboardPedidosRecentes"
+                            class="lista-admin"
+                        >
+                        </div>
+
+                    </div>
+
+
+                    <div class="admin-card">
+
+                        <div class="card-header">
+
+                            <div>
+                                <h3>Estoque</h3>
+
+                                <p>
+                                    Situação dos produtos
+                                </p>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="btn btn-small btn-secondary"
+                                data-secao="produtos"
+                            >
+                                Gerenciar
+                            </button>
+
+                        </div>
+
+                        <div
+                            id="dashboardEstoque"
+                            class="lista-admin"
+                        >
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 PEDIDOS
+            ========================== -->
+            <section
+                id="secaoPedidos"
+                class="admin-section"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Pedidos</h2>
+
+                        <p>
+                            Gerencie os pedidos realizados pelos clientes.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="filtros-admin">
+
+                    <div class="campo">
+
+                        <label for="buscaPedidos">
+                            Buscar
+                        </label>
+
+                        <input
+                            type="search"
+                            id="buscaPedidos"
+                            placeholder="Nome, telefone ou código..."
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="filtroStatusPedido">
+                            Status
+                        </label>
+
+                        <select id="filtroStatusPedido">
+
+                            <option value="">
+                                Todos
+                            </option>
+
+                            <option value="recebido">
+                                Recebido
+                            </option>
+
+                            <option value="confirmado">
+                                Confirmado
+                            </option>
+
+                            <option value="preparando">
+                                Preparando
+                            </option>
+
+                            <option value="saiu_entrega">
+                                Saiu para entrega
+                            </option>
+
+                            <option value="pronto">
+                                Pronto para retirada
+                            </option>
+
+                            <option value="entregue">
+                                Entregue
+                            </option>
+
+                            <option value="cancelado">
+                                Cancelado
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="filtroPeriodoPedidos">
+                            Período
+                        </label>
+
+                        <select id="filtroPeriodoPedidos">
+
+                            <option value="todos">
+                                Todos
+                            </option>
+
+                            <option value="hoje">
+                                Hoje
+                            </option>
+
+                            <option value="7dias">
+                                Últimos 7 dias
+                            </option>
+
+                            <option value="mes">
+                                Este mês
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h3>Lista de pedidos</h3>
+                        </div>
+
+                        <button
+                            type="button"
+                            id="btnExportarPedidos"
+                            class="btn btn-secondary"
+                        >
+                            📥 Exportar
+                        </button>
+
+                    </div>
+
+                    <div
+                        id="listaPedidos"
+                        class="pedidos-admin"
+                    >
+                    </div>
+
+                    <div
+                        id="pedidosVazios"
+                        class="empty-state hidden"
+                    >
+                        <span>🧾</span>
+
+                        <h3>Nenhum pedido encontrado</h3>
+
+                        <p>
+                            Os pedidos realizados pelos clientes aparecerão aqui.
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 PRODUTOS
+            ========================== -->
+            <section
+                id="secaoProdutos"
+                class="admin-section"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Produtos</h2>
+
+                        <p>
+                            Cadastre e gerencie pizzas, bebidas e combos.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="btnNovoProduto"
+                        class="btn btn-primary"
+                    >
+                        ➕ Novo produto
+                    </button>
+
+                </div>
+
+
+                <div class="filtros-admin">
+
+                    <div class="campo">
+
+                        <label for="buscaProdutos">
+                            Buscar
+                        </label>
+
+                        <input
+                            type="search"
+                            id="buscaProdutos"
+                            placeholder="Nome do produto..."
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="filtroCategoriaProdutos">
+                            Categoria
+                        </label>
+
+                        <select id="filtroCategoriaProdutos">
+
+                            <option value="">
+                                Todas
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="filtroEstoqueProdutos">
+                            Estoque
+                        </label>
+
+                        <select id="filtroEstoqueProdutos">
+
+                            <option value="">
+                                Todos
+                            </option>
+
+                            <option value="disponivel">
+                                Disponíveis
+                            </option>
+
+                            <option value="pouco">
+                                Pouco estoque
+                            </option>
+
+                            <option value="esgotado">
+                                Esgotados
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="listaProdutosAdmin"
+                    class="produtos-admin-grid"
+                >
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 CATEGORIAS
+            ========================== -->
+            <section
+                id="secaoCategorias"
+                class="admin-section"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Categorias</h2>
+
+                        <p>
+                            Organize o cardápio da Gran Pizza.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="btnNovaCategoria"
+                        class="btn btn-primary"
+                    >
+                        ➕ Nova categoria
+                    </button>
+
+                </div>
+
+
+                <div class="admin-card">
+
+                    <div
+                        id="listaCategoriasAdmin"
+                        class="lista-crud"
+                    >
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 CUPONS
+            ========================== -->
+            <section
+                id="secaoCupons"
+                class="admin-section"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Cupons</h2>
+
+                        <p>
+                            Crie promoções e descontos para os clientes.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="btnNovoCupom"
+                        class="btn btn-primary"
+                    >
+                        ➕ Novo cupom
+                    </button>
+
+                </div>
+
+
+                <div class="admin-card">
+
+                    <div
+                        id="listaCuponsAdmin"
+                        class="lista-crud"
+                    >
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 GALERIA
+            ========================== -->
+            <section
+                id="secaoGaleria"
+                class="admin-section"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Galeria</h2>
+
+                        <p>
+                            Gerencie as imagens exibidas na loja.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="btnNovaImagem"
+                        class="btn btn-primary"
+                    >
+                        ➕ Nova imagem
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="listaGaleriaAdmin"
+                    class="galeria-admin-grid"
+                >
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 AVALIAÇÕES
+            ========================== -->
+            <section
+                id="secaoAvaliacoes"
+                class="admin-section"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Avaliações</h2>
+
+                        <p>
+                            Visualize e gerencie as avaliações dos clientes.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="btnNovaAvaliacao"
+                        class="btn btn-primary"
+                    >
+                        ➕ Novo feedback
+                    </button>
+
+                </div>
+
+
+                <div class="admin-card">
+
+                    <div
+                        id="listaAvaliacoesAdmin"
+                        class="lista-crud"
+                    >
+                    </div>
+
+                    <div
+                        id="avaliacoesVaziasAdmin"
+                        class="empty-state hidden"
+                    >
+                        <span>⭐</span>
+
+                        <h3>Nenhuma avaliação</h3>
+
+                        <p>
+                            As avaliações dos clientes aparecerão aqui.
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 FIDELIDADE
+            ========================== -->
+            <section
+                id="secaoFidelidade"
+                class="admin-section"
+            >
+                <div class="section-heading">
+                    <div>
+                        <h2>🍕 Fidelidade</h2>
+                        <p>Controle clientes, progresso e recompensas.</p>
+                    </div>
+                </div>
+
+                <form id="formConfigFidelidade" class="admin-card form-config-fidelidade">
+                    <div class="form-grid">
+                        <div class="campo">
+                            <label>
+                                <input type="checkbox" id="fidelidadeAtiva">
+                                Programa ativo
+                            </label>
+                        </div>
+                        <div class="campo">
+                            <label for="fidelidadeMeta">Pizzas para recompensa</label>
+                            <input type="number" id="fidelidadeMeta" min="1" step="1" required>
+                        </div>
+                        <div class="campo">
+                            <label for="fidelidadePremio">Descrição da recompensa</label>
+                            <input type="text" id="fidelidadePremio" required>
+                        </div>
+                        <div class="campo-botao">
+                            <button type="submit" class="btn btn-primary">Salvar configuração</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="admin-card">
+                    <div class="card-header">
+                        <div>
+                            <h3>Clientes</h3>
+                            <p>Dados calculados a partir dos pedidos reais.</p>
+                        </div>
+                        <input type="search" id="buscaFidelidade" placeholder="Nome ou telefone...">
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Telefone</th>
+                                    <th>Pizzas</th>
+                                    <th>Recompensas</th>
+                                    <th>Último pedido</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="listaFidelidade"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="admin-card hidden" id="detalheFidelidade">
+                    <div class="card-header">
+                        <div>
+                            <h3 id="fidelidadeClienteNome">Cliente</h3>
+                            <p id="fidelidadeClienteTelefone"></p>
+                        </div>
+                        <button type="button" class="btn btn-small btn-secondary" id="btnFecharDetalheFidelidade">Fechar</button>
+                    </div>
+                    <div class="fidelidade-detalhes">
+                        <strong id="fidelidadeTotalPizzas">0 pizzas</strong>
+                        <span id="fidelidadeProgresso">0/5</span>
+                        <span id="fidelidadeTotalPremios">0 recompensas disponíveis</span>
+                    </div>
+                    <div class="fidelidade-barra"><div id="fidelidadeBarraProgresso"></div></div>
+                    <div class="acoes-fidelidade">
+                        <button type="button" class="btn btn-small btn-secondary" data-ajuste-fidelidade="pizza" data-valor="-1">- Pizza</button>
+                        <button type="button" class="btn btn-small btn-secondary" data-ajuste-fidelidade="pizza" data-valor="1">+ Pizza</button>
+                        <button type="button" class="btn btn-small btn-secondary" data-ajuste-fidelidade="premio" data-valor="-1">- Recompensa</button>
+                        <button type="button" class="btn btn-small btn-secondary" data-ajuste-fidelidade="premio" data-valor="1">+ Recompensa</button>
+                        <button type="button" class="btn btn-primary" id="btnResgatarFidelidade">Resgatar recompensa</button>
+                    </div>
+                    <p id="historicoFidelidade" class="fidelidade-historico"></p>
+                </div>
+            </section>
+
+
+            <!-- =========================
+                 CONFIGURAÇÕES
+            ========================== -->
+            <section
+                id="secaoConfiguracoes"
+                class="admin-section"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Configurações</h2>
+
+                        <p>
+                            Configure as informações da sua pizzaria.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <form id="formConfiguracoes">
+
+                    <div class="admin-card">
+
+                        <div class="card-header">
+
+                            <div>
+                                <h3>Informações da loja</h3>
+
+                                <p>
+                                    Dados exibidos para os clientes.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="campo">
+
+                                <label for="configNomeLoja">
+                                    Nome da loja
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="configNomeLoja"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="campo">
+
+                                <label for="configSlogan">
+                                    Slogan
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="configSlogan"
+                                >
+
+                            </div>
+
+
+                            <div class="campo">
+
+                                <label for="configEndereco">
+                                    Endereço
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="configEndereco"
+                                >
+
+                            </div>
+
+
+                            <div class="campo">
+
+                                <label for="configWhatsApp">
+                                    WhatsApp
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="configWhatsApp"
+                                    placeholder="5598999999999"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="admin-card">
+
+                        <div class="card-header">
+
+                            <div>
+                                <h3>Entrega</h3>
+
+                                <p>
+                                    Configure as opções de entrega.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="campo">
+
+                                <label for="configTaxaEntrega">
+                                    Taxa de entrega
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="configTaxaEntrega"
+                                    min="0"
+                                    step="0.01"
+                                >
+
+                            </div>
+
+
+                            <label class="checkbox-label">
+
+                                <input
+                                    type="checkbox"
+                                    id="configEntregaAtiva"
+                                >
+
+                                <span>
+                                    Aceitar pedidos para entrega
+                                </span>
+
+                            </label>
+
+
+                            <label class="checkbox-label">
+
+                                <input
+                                    type="checkbox"
+                                    id="configRetiradaAtiva"
+                                >
+
+                                <span>
+                                    Aceitar retirada no local
+                                </span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="admin-card">
+
+                        <div class="card-header">
+
+                            <div>
+                                <h3>Horário de funcionamento</h3>
+
+                                <p>
+                                    Defina quando a loja estará aberta.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="horarios-grid">
+
+                            <div class="horario-item">
+
+                                <strong>Domingo</strong>
+
+                                <div class="horario-inputs">
+
+                                    <input
+                                        type="time"
+                                        id="horarioDomingoAbertura"
+                                    >
+
+                                    <span>até</span>
+
+                                    <input
+                                        type="time"
+                                        id="horarioDomingoFechamento"
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="horario-item">
+
+                                <strong>Segunda-feira</strong>
+
+                                <div class="horario-inputs">
+
+                                    <input
+                                        type="time"
+                                        id="horarioSegundaAbertura"
+                                    >
+
+                                    <span>até</span>
+
+                                    <input
+                                        type="time"
+                                        id="horarioSegundaFechamento"
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="horario-item">
+
+                                <strong>Terça-feira</strong>
+
+                                <div class="horario-inputs">
+
+                                    <input
+                                        type="time"
+                                        id="horarioTercaAbertura"
+                                    >
+
+                                    <span>até</span>
+
+                                    <input
+                                        type="time"
+                                        id="horarioTercaFechamento"
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="horario-item">
+
+                                <strong>Quarta-feira</strong>
+
+                                <div class="horario-inputs">
+
+                                    <input
+                                        type="time"
+                                        id="horarioQuartaAbertura"
+                                    >
+
+                                    <span>até</span>
+
+                                    <input
+                                        type="time"
+                                        id="horarioQuartaFechamento"
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="horario-item">
+
+                                <strong>Quinta-feira</strong>
+
+                                <div class="horario-inputs">
+
+                                    <input
+                                        type="time"
+                                        id="horarioQuintaAbertura"
+                                    >
+
+                                    <span>até</span>
+
+                                    <input
+                                        type="time"
+                                        id="horarioQuintaFechamento"
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="horario-item">
+
+                                <strong>Sexta-feira</strong>
+
+                                <div class="horario-inputs">
+
+                                    <input
+                                        type="time"
+                                        id="horarioSextaAbertura"
+                                    >
+
+                                    <span>até</span>
+
+                                    <input
+                                        type="time"
+                                        id="horarioSextaFechamento"
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="horario-item">
+
+                                <strong>Sábado</strong>
+
+                                <div class="horario-inputs">
+
+                                    <input
+                                        type="time"
+                                        id="horarioSabadoAbertura"
+                                    >
+
+                                    <span>até</span>
+
+                                    <input
+                                        type="time"
+                                        id="horarioSabadoFechamento"
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                        >
+                            💾 Salvar configurações
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            <!-- =========================
+                 BACKUP
+            ========================== -->
+            <section
+                id="secaoBackup"
+                class="admin-section"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Backup e restauração</h2>
+
+                        <p>
+                            Salve ou restaure os dados da Gran Pizza.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="backup-grid">
+
+                    <div class="admin-card">
+
+                        <div class="backup-icon">
+                            📥
+                        </div>
+
+                        <h3>Exportar dados</h3>
+
+                        <p>
+                            Baixe um arquivo JSON contendo produtos,
+                            pedidos, categorias, cupons, galeria,
+                            avaliações e configurações.
+                        </p>
+
+                        <button
+                            type="button"
+                            id="btnExportarBackup"
+                            class="btn btn-primary"
+                        >
+                            Exportar backup
+                        </button>
+
+                    </div>
+
+
+                    <div class="admin-card">
+
+                        <div class="backup-icon">
+                            📤
+                        </div>
+
+                        <h3>Restaurar dados</h3>
+
+                        <p>
+                            Importe um backup JSON anteriormente salvo.
+                        </p>
+
+                        <input
+                            type="file"
+                            id="inputImportarBackup"
+                            accept=".json,application/json"
+                            hidden
+                        >
+
+                        <button
+                            type="button"
+                            id="btnImportarBackup"
+                            class="btn btn-secondary"
+                        >
+                            Selecionar backup
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 RELATÓRIOS
+            ========================== -->
+            <section
+                id="secaoRelatorios"
+                class="admin-section"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Relatórios</h2>
+
+                        <p>
+                            Analise o desempenho da Gran Pizza.
+                        </p>
+                    </div>
+
+                    <div class="filter-group">
+
+                        <button
+                            type="button"
+                            class="btn btn-small btn-secondary active"
+                            data-filtro-relatorio="hoje"
+                        >
+                            Hoje
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn btn-small btn-secondary"
+                            data-filtro-relatorio="semana"
+                        >
+                            Esta semana
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn btn-small btn-secondary"
+                            data-filtro-relatorio="mes"
+                        >
+                            Este mês
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div id="relatorioConteudo">
+
+                    <div class="stats-grid">
+
+                        <article class="stat-card">
+
+                            <div class="stat-icon">
+                                💰
+                            </div>
+
+                            <div>
+                                <span>Faturamento total</span>
+
+                                <strong id="relatorioFaturamento">
+                                    R$ 0,00
+                                </strong>
+                            </div>
+
+                        </article>
+
+
+                        <article class="stat-card">
+
+                            <div class="stat-icon">
+                                🛒
+                            </div>
+
+                            <div>
+                                <span>Pedidos</span>
+
+                                <strong id="relatorioTotalPedidos">
+                                    0
+                                </strong>
+                            </div>
+
+                        </article>
+
+
+                        <article class="stat-card">
+
+                            <div class="stat-icon">
+                                📦
+                            </div>
+
+                            <div>
+                                <span>Produtos vendidos</span>
+
+                                <strong id="relatorioTotalProdutos">
+                                    0
+                                </strong>
+                            </div>
+
+                        </article>
+
+
+                        <article class="stat-card">
+
+                            <div class="stat-icon">
+                                📊
+                            </div>
+
+                            <div>
+                                <span>Ticket médio</span>
+
+                                <strong id="relatorioTicketMedio">
+                                    R$ 0,00
+                                </strong>
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <div class="dashboard-grid">
+
+                        <div class="admin-card">
+
+                            <div class="card-header">
+                                <h3>📦 Produto mais vendido</h3>
+                            </div>
+
+                            <div id="relatorioProdutoMaisVendido" class="stat-list">
+                                <!-- Preenchido via JS -->
+                            </div>
+
+                        </div>
+
+
+                        <div class="admin-card">
+
+                            <div class="card-header">
+                                <h3>📝 Pedidos por status</h3>
+                            </div>
+
+                            <div id="relatorioPedidosPorStatus" class="stat-list">
+                                <!-- Preenchido via JS -->
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div id="relatorioVazio" class="admin-card empty-state hidden">
+                    <span>📊</span>
+                    <h3>Sem dados para este período</h3>
+                    <p>Não encontramos pedidos realizados no período selecionado.</p>
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================
+         MODAL PRODUTO
+    ========================== -->
+    <div
+        id="modalProdutoAdmin"
+        class="modal hidden"
+    >
+
+        <div class="modal-overlay" data-fechar-modal></div>
+
+        <div class="modal-content modal-large">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2 id="tituloModalProduto">
+                        Novo produto
+                    </h2>
+
+                    <p>
+                        Cadastre as informações do produto.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    class="btn-icon"
+                    data-fechar-modal
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="formProdutoAdmin">
+
+                <input
+                    type="hidden"
+                    id="produtoId"
+                >
+
+
+                <div class="form-grid">
+
+                    <div class="campo">
+
+                        <label for="produtoNome">
+                            Nome
+                        </label>
+
+                        <input
+                            type="text"
+                            id="produtoNome"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="produtoCategoria">
+                            Categoria
+                        </label>
+
+                        <select
+                            id="produtoCategoria"
+                            required
+                        >
+                        </select>
+
+                    </div>
+
+
+                    <div class="campo campo-full">
+
+                        <label for="produtoDescricao">
+                            Descrição
+                        </label>
+
+                        <textarea
+                            id="produtoDescricao"
+                            rows="4"
+                            placeholder="Descrição do produto..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="produtoPreco">
+                            Preço
+                        </label>
+
+                        <input
+                            type="number"
+                            id="produtoPreco"
+                            min="0"
+                            step="0.01"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="produtoEstoque">
+                            Estoque
+                        </label>
+
+                        <input
+                            type="number"
+                            id="produtoEstoque"
+                            min="0"
+                            step="1"
+                            value="10"
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="produtoImagemArquivo">
+                            Imagem do produto
+                        </label>
+
+                        <input
+                            type="file"
+                            id="produtoImagemArquivo"
+                            accept="image/*"
+                            class="input-file-admin"
+                        >
+
+                        <div id="previewImagemProduto" class="preview-imagem-container">
+                            <span>Nenhuma imagem selecionada</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="produtoImagem">
+                            Ou URL da imagem
+                        </label>
+
+                        <input
+                            type="url"
+                            id="produtoImagem"
+                            placeholder="https://..."
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-section">
+                    <div class="card-header">
+                        <div>
+                            <h3>Sabores</h3>
+                            <p>Opcional. Ative para permitir a escolha de sabor e defina o valor de cada opção.</p>
+                        </div>
+                        <button type="button" id="btnAdicionarSabor" class="btn btn-small btn-secondary">➕ Adicionar sabor</button>
+                    </div>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="produtoTemSabores">
+                        <span>Ativar escolha de sabores para este produto</span>
+                    </label>
+                    <div id="containerSaboresProduto" class="opcoes-admin hidden">
+                        <div id="listaSaboresProduto" class="opcoes-admin"></div>
+                    </div>
+                </div>
+
+
+                <div class="form-section">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h3>Tamanhos</h3>
+
+                            <p>
+                                Opcional. Permita que o cliente escolha o tamanho.
+                            </p>
+                        </div>
+
+                        <button
+                            type="button"
+                            id="btnAdicionarTamanho"
+                            class="btn btn-small btn-secondary"
+                        >
+                            ➕ Adicionar
+                        </button>
+
+                    </div>
+
+                    <div
+                        id="listaTamanhosProduto"
+                        class="opcoes-admin"
+                    >
+                    </div>
+
+                </div>
+
+
+                <div class="form-section">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h3>Adicionais</h3>
+
+                            <p>
+                                Ingredientes ou extras opcionais.
+                            </p>
+                        </div>
+
+                        <button
+                            type="button"
+                            id="btnAdicionarAdicional"
+                            class="btn btn-small btn-secondary"
+                        >
+                            ➕ Adicionar
+                        </button>
+
+                    </div>
+
+                    <div
+                        id="listaAdicionaisProduto"
+                        class="opcoes-admin"
+                    >
+                    </div>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-fechar-modal
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        Salvar produto
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MODAL CATEGORIA
+    ========================== -->
+    <div
+        id="modalCategoriaAdmin"
+        class="modal hidden"
+    >
+
+        <div class="modal-overlay" data-fechar-modal></div>
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2 id="tituloModalCategoria">
+                    Nova categoria
+                </h2>
+
+                <button
+                    type="button"
+                    class="btn-icon"
+                    data-fechar-modal
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="formCategoriaAdmin">
+
+                <input
+                    type="hidden"
+                    id="categoriaId"
+                >
+
+                <div class="campo">
+
+                    <label for="categoriaNome">
+                        Nome da categoria
+                    </label>
+
+                    <input
+                        type="text"
+                        id="categoriaNome"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="categoriaOrdem">
+                        Ordem
+                    </label>
+
+                    <input
+                        type="number"
+                        id="categoriaOrdem"
+                        min="0"
+                        value="0"
+                    >
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-fechar-modal
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        Salvar categoria
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MODAL CUPOM
+    ========================== -->
+    <div
+        id="modalCupomAdmin"
+        class="modal hidden"
+    >
+
+        <div class="modal-overlay" data-fechar-modal></div>
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2 id="tituloModalCupom">
+                    Novo cupom
+                </h2>
+
+                <button
+                    type="button"
+                    class="btn-icon"
+                    data-fechar-modal
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="formCupomAdmin">
+
+                <input
+                    type="hidden"
+                    id="cupomId"
+                >
+
+                <div class="form-grid">
+
+                    <div class="campo">
+
+                        <label for="cupomCodigo">
+                            Código
+                        </label>
+
+                        <input
+                            type="text"
+                            id="cupomCodigo"
+                            placeholder="EX: BUENA10"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="cupomTipo">
+                            Tipo de desconto
+                        </label>
+
+                        <select id="cupomTipo" required>
+                            <option value="percentual">
+                                Percentual (%)
+                            </option>
+                            <option value="fixo">
+                                Valor fixo (R$)
+                            </option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="cupomDesconto">
+                            Valor do desconto
+                        </label>
+
+                        <input
+                            type="number"
+                            id="cupomDesconto"
+                            min="0"
+                            step="0.01"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="cupomMinimo">
+                            Pedido mínimo
+                        </label>
+
+                        <input
+                            type="number"
+                            id="cupomMinimo"
+                            min="0"
+                            step="0.01"
+                            value="0"
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="cupomValidade">
+                            Validade
+                        </label>
+
+                        <input
+                            type="date"
+                            id="cupomValidade"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <label class="checkbox-label">
+
+                    <input
+                        type="checkbox"
+                        id="cupomAtivo"
+                        checked
+                    >
+
+                    <span>
+                        Cupom ativo
+                    </span>
+
+                </label>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-fechar-modal
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        Salvar cupom
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MODAL GALERIA
+    ========================== -->
+    <div
+        id="modalGaleriaAdmin"
+        class="modal hidden"
+    >
+
+        <div class="modal-overlay" data-fechar-modal></div>
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2 id="tituloModalGaleria">
+                    Nova imagem
+                </h2>
+
+                <button
+                    type="button"
+                    class="btn-icon"
+                    data-fechar-modal
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="formGaleriaAdmin">
+
+                <input
+                    type="hidden"
+                    id="galeriaId"
+                >
+
+                <div class="campo">
+
+                    <label for="galeriaTitulo">
+                        Título
+                    </label>
+
+                    <input
+                        type="text"
+                        id="galeriaTitulo"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="galeriaImagemArquivo">
+                        Imagem da galeria
+                    </label>
+
+                    <input
+                        type="file"
+                        id="galeriaImagemArquivo"
+                        accept="image/*"
+                        class="input-file-admin"
+                    >
+
+                    <div id="previewImagemGaleria" class="preview-imagem-container">
+                        <span>Nenhuma imagem selecionada</span>
+                    </div>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="galeriaImagem">
+                        Ou URL da imagem
+                    </label>
+
+                    <input
+                        type="url"
+                        id="galeriaImagem"
+                        placeholder="https://..."
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="galeriaDescricao">
+                        Descrição
+                    </label>
+
+                    <textarea
+                        id="galeriaDescricao"
+                        rows="3"
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-fechar-modal
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        Salvar imagem
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MODAL AVALIAÇÃO
+    ========================== -->
+    <div
+        id="modalAvaliacaoAdmin"
+        class="modal hidden"
+    >
+
+        <div class="modal-overlay" data-fechar-modal></div>
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2 id="tituloModalAvaliacao">
+                    Nova avaliação
+                </h2>
+
+                <button
+                    type="button"
+                    class="btn-icon"
+                    data-fechar-modal
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="formAvaliacaoAdmin">
+
+                <input
+                    type="hidden"
+                    id="avaliacaoId"
+                >
+
+                <div class="campo">
+
+                    <label for="avaliacaoNome">
+                        Nome do cliente
+                    </label>
+
+                    <input
+                        type="text"
+                        id="avaliacaoNome"
+                        placeholder="Ex.: João Silva"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="avaliacaoEstrelas">
+                        Estrelas
+                    </label>
+
+                    <select
+                        id="avaliacaoEstrelas"
+                        required
+                    >
+                        <option value="5">⭐⭐⭐⭐⭐ (5 estrelas)</option>
+                        <option value="4">⭐⭐⭐⭐ (4 estrelas)</option>
+                        <option value="3">⭐⭐⭐ (3 estrelas)</option>
+                        <option value="2">⭐⭐ (2 estrelas)</option>
+                        <option value="1">⭐ (1 estrela)</option>
+                    </select>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="avaliacaoTexto">
+                        Comentário
+                    </label>
+
+                    <textarea
+                        id="avaliacaoTexto"
+                        rows="4"
+                        placeholder="Escreva aqui o que o cliente disse..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-fechar-modal
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        Salvar
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MODAL DETALHES DO PEDIDO
+    ========================== -->
+    <div
+        id="modalPedidoAdmin"
+        class="modal hidden"
+    >
+
+        <div class="modal-overlay" data-fechar-modal></div>
+
+        <div class="modal-content modal-large">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Detalhes do pedido
+                    </h2>
+
+                    <p id="pedidoModalCodigo">
+                        Pedido
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="btn-icon"
+                    data-fechar-modal
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div id="pedidoModalConteudo">
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-fechar-modal
+                >
+                    Fechar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         TOAST
+    ========================== -->
+    <div
+        id="toastAdmin"
+        class="toast"
+        role="status"
+        aria-live="polite"
+    >
+
+        <span id="toastAdminMensagem">
+            Operação realizada.
+        </span>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

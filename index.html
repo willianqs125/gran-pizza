@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gran Pizza</title>
+
+    <meta
+        name="description"
+        content="Gran Pizza — pizzas, combos, bebidas e muito sabor para você."
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         CABEÇALHO
+    ========================== -->
+    <header class="header">
+        <div class="container header-content">
+
+            <a href="#inicio" class="brand" id="nomeLoja">
+                <img src="logo.jpeg.jpeg" alt="Gran Pizza Logo" class="brand-logo">
+                <span>Gran Pizza</span>
+            </a>
+
+            <nav class="nav" id="menuNavegacao">
+                <a href="#inicio">Início</a>
+                <a href="#cardapio">Cardápio</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#avaliacoes">Avaliações</a>
+                <a href="#contato">Contato</a>
+                <button type="button" class="btn-tracking-nav" id="btnMeusPedidosNav">
+                    📋 Meus Pedidos
+                </button>
+            </nav>
+
+            <div class="header-actions">
+                <button
+                    type="button"
+                    class="btn-cart"
+                    id="btnAbrirCarrinho"
+                    aria-label="Abrir carrinho"
+                >
+                    🛒
+                    <span>Carrinho</span>
+                    <strong id="contadorCarrinho">0</strong>
+                </button>
+
+                <button
+                    type="button"
+                    class="btn-menu"
+                    id="btnMenu"
+                    aria-label="Abrir menu"
+                >
+                    ☰
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- =========================
+             HERO
+        ========================== -->
+        <section class="hero" id="inicio">
+            <div class="container hero-content">
+
+                <div class="hero-text">
+                    <span class="hero-badge">
+                        🍕 Sabor que reúne
+                    </span>
+
+                    <h1>
+                        A pizza que deixa
+                        <span>qualquer momento</span>
+                        melhor.
+                    </h1>
+
+                    <p id="sloganLoja">
+                        Pizzas preparadas com carinho para você compartilhar
+                        momentos especiais.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#cardapio" class="btn btn-primary">
+                            Ver cardápio
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            id="btnWhatsAppHero"
+                        >
+                            Pedir pelo WhatsApp
+                        </button>
+                    </div>
+
+                    <div class="hero-info">
+                        <div>
+                            <strong id="statusLoja">
+                                ● Loja aberta
+                            </strong>
+
+                            <span id="horarioLoja">
+                                Hoje: 18:00 às 23:00
+                            </span>
+                        </div>
+
+                        <div>
+                            <strong>📍</strong>
+
+                            <span id="enderecoLoja">
+                                Bacabal - MA
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="hero-pizza">
+                        <img
+                            src="pngtree-cartoon-chef-holding-pizza-png-image_15105925.png"
+                            alt="Chef segurando uma pizza"
+                        >
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================
+             CATEGORIAS
+        ========================== -->
+        <section class="categories-section">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span>Escolha o que deseja</span>
+                    <h2>Nosso cardápio</h2>
+                </div>
+
+                <div
+                    class="categories"
+                    id="listaCategorias"
+                    aria-label="Categorias do cardápio"
+                >
+                    <!-- Categorias inseridas pelo JavaScript -->
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================
+             CARDÁPIO
+        ========================== -->
+        <section class="menu-section" id="cardapio">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span>Feito para matar sua fome</span>
+
+                    <h2>
+                        Escolha sua favorita
+                    </h2>
+
+                    <p>
+                        Confira nossas opções e monte seu pedido do seu jeito.
+                    </p>
+                </div>
+
+                <div class="menu-toolbar">
+
+                    <div class="search-box">
+                        <label for="campoBusca">
+                            Buscar no cardápio
+                        </label>
+
+                        <input
+                            type="search"
+                            id="campoBusca"
+                            placeholder="Ex.: calabresa, chocolate..."
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <div class="filter-box">
+                        <label for="filtroCategoria">
+                            Categoria
+                        </label>
+
+                        <select id="filtroCategoria">
+                            <option value="todos">
+                                Todas
+                            </option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div
+                    class="products-grid"
+                    id="listaProdutos"
+                >
+                    <!-- Produtos inseridos pelo JavaScript -->
+                </div>
+
+                <div
+                    class="empty-state hidden"
+                    id="produtosVazios"
+                >
+                    <div class="empty-icon">
+                        🍕
+                    </div>
+
+                    <h3>
+                        Nenhum produto encontrado
+                    </h3>
+
+                    <p>
+                        Tente buscar outro produto ou escolher outra categoria.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================
+             PROGRAMA DE FIDELIDADE
+        ========================== -->
+        <section class="loyalty-section" id="fidelidadeCliente">
+            <div class="container">
+                <div class="section-heading">
+                    <span>🍕 Programa de Fidelidade</span>
+                    <h2>Acumule pizzas e ganhe uma Pizza G grátis</h2>
+                </div>
+
+                <div class="loyalty-box">
+                    <label for="telefoneFidelidade">Consulte pelo telefone</label>
+                    <input
+                        type="tel"
+                        id="telefoneFidelidade"
+                        placeholder="(99) 99999-9999"
+                        autocomplete="tel"
+                    >
+
+                    <div class="loyalty-summary" aria-live="polite">
+                        <strong id="fidelidadePizzas">0 pizzas acumuladas</strong>
+                        <span id="fidelidadeProgressoTexto">0/5 até a próxima recompensa</span>
+                        <span id="fidelidadePremios">0 pizzas grátis disponíveis</span>
+                    </div>
+
+                    <div class="loyalty-progress" aria-hidden="true">
+                        <div id="fidelidadeProgressoBarra"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =========================
+             SOBRE
+        ========================== -->
+        <section class="about-section" id="sobre">
+            <div class="container about-content">
+
+                <div class="about-visual">
+                    <div class="about-icon">
+                        <img
+                            src="pngtree-cartoon-chef-with-pizza-plate-delicious-italian-dish-presentation-png-image_19773314.png"
+                            alt="Chef da Gran Pizza"
+                        >
+                    </div>
+                </div>
+
+                <div class="about-text">
+
+                    <span class="section-label">
+                        Sobre a Gran Pizza
+                    </span>
+
+                    <h2>
+                        Mais que uma pizza,
+                        <span>um momento para compartilhar.</span>
+                    </h2>
+
+                    <p>
+                        A Gran Pizza nasceu com a missão de levar sabor,
+                        qualidade e praticidade para a sua mesa.
+                    </p>
+
+                    <p>
+                        Trabalhamos para preparar cada pedido com cuidado,
+                        utilizando ingredientes selecionados e muito carinho.
+                    </p>
+
+                    <div class="about-features">
+
+                        <div class="feature">
+                            <strong>🍕</strong>
+
+                            <div>
+                                <h3>
+                                    Feita na hora
+                                </h3>
+
+                                <p>
+                                    Preparada especialmente para o seu pedido.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="feature">
+                            <strong>🚀</strong>
+
+                            <div>
+                                <h3>
+                                    Entrega rápida
+                                </h3>
+
+                                <p>
+                                    Seu pedido chega quentinho até você.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="feature">
+                            <strong>❤️</strong>
+
+                            <div>
+                                <h3>
+                                    Feita com carinho
+                                </h3>
+
+                                <p>
+                                    Qualidade em cada detalhe.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================
+             GALERIA
+        ========================== -->
+        <section class="gallery-section" id="galeria">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span>
+                        Um pouco da nossa cozinha
+                    </span>
+
+                    <h2>
+                        Galeria
+                    </h2>
+                </div>
+
+                <div
+                    class="gallery-grid"
+                    id="listaGaleria"
+                >
+                    <!-- Fotos inseridas pelo JavaScript -->
+                </div>
+
+                <div
+                    class="empty-state hidden"
+                    id="galeriaVazia"
+                >
+                    <div class="empty-icon">
+                        📸
+                    </div>
+
+                    <h3>
+                        Galeria em breve
+                    </h3>
+
+                    <p>
+                        Em breve teremos novidades por aqui.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================
+             AVALIAÇÕES
+        ========================== -->
+        <section class="reviews-section" id="avaliacoes">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span>
+                        Quem pede, recomenda
+                    </span>
+
+                    <h2>
+                        Avaliações dos clientes
+                    </h2>
+                </div>
+
+                <div
+                    class="reviews-grid"
+                    id="listaAvaliacoes"
+                >
+                    <!-- Avaliações inseridas pelo JavaScript -->
+                </div>
+
+                <div
+                    class="empty-state hidden"
+                    id="avaliacoesVazias"
+                >
+                    <div class="empty-icon">
+                        ⭐
+                    </div>
+
+                    <h3>
+                        Ainda não temos avaliações
+                    </h3>
+
+                    <p>
+                        Seja o primeiro a avaliar seu pedido!
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================
+             RASTREAR PEDIDO
+        ========================== -->
+        <section class="tracking-section" id="rastrear">
+            <div class="container">
+
+                <div class="tracking-box">
+
+                    <div class="tracking-icon">
+                        📦
+                    </div>
+
+                    <div class="tracking-content">
+
+                        <span>
+                            Acompanhe seu pedido
+                        </span>
+
+                        <h2>
+                            Onde está minha pizza?
+                        </h2>
+
+                        <p>
+                            Digite o código recebido após realizar seu pedido.
+                        </p>
+
+                        <form id="formRastrearPedido">
+
+                            <div class="tracking-form">
+
+                                <input
+                                    type="text"
+                                    id="codigoRastreio"
+                                    placeholder="Ex.: BP-123456"
+                                    autocomplete="off"
+                                    required
+                                >
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-primary"
+                                >
+                                    Rastrear
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                        <div
+                            class="tracking-result hidden"
+                            id="resultadoRastreio"
+                        >
+                            <!-- Resultado inserido pelo JavaScript -->
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================
+             CTA
+        ========================== -->
+        <section class="cta-section">
+            <div class="container">
+
+                <div class="cta-content">
+
+                    <span>
+                        Está esperando o quê?
+                    </span>
+
+                    <h2>
+                        Seu próximo momento
+                        <strong>começa com uma pizza.</strong>
+                    </h2>
+
+                    <p>
+                        Escolha seus sabores favoritos e faça seu pedido.
+                    </p>
+
+                    <a
+                        href="#cardapio"
+                        class="btn btn-primary"
+                    >
+                        Montar meu pedido 🍕
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         RODAPÉ
+    ========================== -->
+    <footer
+        class="footer"
+        id="contato"
+    >
+
+        <div class="container footer-grid">
+
+            <div class="footer-brand">
+
+                <a
+                    href="#inicio"
+                    class="brand"
+                    id="nomeLojaFooter"
+                >
+                    Gran Pizza
+                </a>
+
+                <p id="sloganFooter">
+                    Sabor que reúne.
+                </p>
+
+                <a
+                    href="#"
+                    id="linkWhatsAppFooter"
+                    class="whatsapp-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    💬 Falar pelo WhatsApp
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Atalhos
+                </h3>
+
+                <a href="#inicio">
+                    Início
+                </a>
+
+                <a href="#cardapio">
+                    Cardápio
+                </a>
+
+                <a href="#sobre">
+                    Sobre nós
+                </a>
+
+                <a href="#avaliacoes">
+                    Avaliações
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Atendimento
+                </h3>
+
+                <p id="footerEndereco">
+                    📍 Bacabal - MA
+                </p>
+
+                <p id="footerHorario">
+                    🕐 18:00 às 23:00
+                </p>
+
+                <p id="footerTelefone">
+                    📱 WhatsApp
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Formas de pagamento
+                </h3>
+
+                <div class="payment-icons">
+                    <span>
+                        PIX
+                    </span>
+
+                    <span>
+                        Dinheiro
+                    </span>
+
+                    <span>
+                        Cartão
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <div class="container">
+
+                <p>
+                    ©
+                    <span id="anoAtual"></span>
+
+                    <span id="nomeLojaCopyright">
+                        Gran Pizza
+                    </span>.
+
+                    Todos os direitos reservados.
+                </p>
+
+                <a href="admin/index.html">
+                    Área administrativa
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         MODAL DO PRODUTO
+    ========================== -->
+    <div
+        class="modal hidden"
+        id="modalProduto"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalProdutoTitulo"
+    >
+
+        <div
+            class="modal-overlay"
+            data-fechar-modal
+        ></div>
+
+        <div class="modal-content product-modal">
+
+            <button
+                type="button"
+                class="modal-close"
+                data-fechar-modal
+                aria-label="Fechar"
+            >
+                ×
+            </button>
+
+            <div id="produtoModalConteudo">
+                <!-- Conteúdo gerado pelo JavaScript -->
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         CARRINHO
+    ========================== -->
+    <div
+        class="cart-overlay hidden"
+        id="cartOverlay"
+    ></div>
+
+    <aside
+        class="cart-drawer"
+        id="carrinhoDrawer"
+        aria-label="Carrinho de compras"
+    >
+
+        <div class="cart-header">
+
+            <div>
+                <span>
+                    Seu pedido
+                </span>
+
+                <h2>
+                    Meu carrinho
+                </h2>
+            </div>
+
+            <button
+                type="button"
+                class="cart-close"
+                id="btnFecharCarrinho"
+                aria-label="Fechar carrinho"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            class="cart-items"
+            id="itensCarrinho"
+        >
+            <!-- Itens inseridos pelo JavaScript -->
+        </div>
+
+
+        <div
+            class="cart-empty"
+            id="carrinhoVazio"
+        >
+
+            <div>
+                🛒
+            </div>
+
+            <h3>
+                Seu carrinho está vazio
+            </h3>
+
+            <p>
+                Adicione uma pizza deliciosa para começar.
+            </p>
+
+            <button
+                type="button"
+                class="btn btn-primary"
+                id="btnIrCardapio"
+            >
+                Ver cardápio
+            </button>
+
+        </div>
+
+
+        <div
+            class="cart-footer"
+            id="rodapeCarrinho"
+        >
+
+            <div class="cart-summary">
+
+                <div>
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <strong id="subtotalCarrinho">
+                        R$ 0,00
+                    </strong>
+                </div>
+
+                <div>
+                    <span>
+                        Entrega
+                    </span>
+
+                    <strong id="entregaCarrinho">
+                        R$ 0,00
+                    </strong>
+                </div>
+
+                <div class="cart-total">
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="totalCarrinho">
+                        R$ 0,00
+                    </strong>
+                </div>
+
+            </div>
+
+            <button
+                type="button"
+                class="btn btn-primary btn-full"
+                id="btnFinalizarPedido"
+            >
+                Finalizar pedido
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MODAL CHECKOUT
+    ========================== -->
+    <div
+        class="modal hidden"
+        id="modalCheckout"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="checkoutTitulo"
+    >
+
+        <div
+            class="modal-overlay"
+            data-fechar-checkout
+        ></div>
+
+        <div class="modal-content checkout-modal">
+
+            <button
+                type="button"
+                class="modal-close"
+                data-fechar-checkout
+                aria-label="Fechar"
+            >
+                ×
+            </button>
+
+            <div class="checkout-header">
+
+                <span>
+                    Quase lá!
+                </span>
+
+                <h2 id="checkoutTitulo">
+                    Finalize seu pedido
+                </h2>
+
+                <p>
+                    Preencha seus dados para receber sua pizza.
+                </p>
+
+            </div>
+
+
+            <form id="formCheckout">
+
+                <!-- DADOS DO CLIENTE -->
+                <section class="checkout-section">
+
+                    <h3>
+                        1. Seus dados
+                    </h3>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="clienteNome">
+                                Nome *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="clienteNome"
+                                required
+                                placeholder="Seu nome"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="clienteTelefone">
+                                WhatsApp *
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="clienteTelefone"
+                                required
+                                placeholder="(99) 99999-9999"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- TIPO DE PEDIDO -->
+                <section class="checkout-section">
+
+                    <h3>
+                        2. Como deseja receber?
+                    </h3>
+
+                    <div class="delivery-options">
+
+                        <label class="delivery-option">
+
+                            <input
+                                type="radio"
+                                name="tipoEntrega"
+                                value="entrega"
+                                checked
+                            >
+
+                            <span>
+                                🚴
+
+                                <strong>
+                                    Entrega
+                                </strong>
+
+                                <small>
+                                    Receba em seu endereço
+                                </small>
+                            </span>
+
+                        </label>
+
+
+                        <label class="delivery-option">
+
+                            <input
+                                type="radio"
+                                name="tipoEntrega"
+                                value="retirada"
+                            >
+
+                            <span>
+                                🏪
+
+                                <strong>
+                                    Retirada
+                                </strong>
+
+                                <small>
+                                    Retire na loja
+                                </small>
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ENDEREÇO -->
+                <section
+                    class="checkout-section"
+                    id="secaoEndereco"
+                >
+
+                    <h3>
+                        3. Endereço de entrega
+                    </h3>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="enderecoRua">
+                                Rua / Avenida *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="enderecoRua"
+                                placeholder="Nome da rua"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="enderecoNumero">
+                                Número *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="enderecoNumero"
+                                placeholder="123"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="enderecoBairro">
+                                Bairro *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="enderecoBairro"
+                                placeholder="Seu bairro"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="enderecoComplemento">
+                                Complemento
+                            </label>
+
+                            <input
+                                type="text"
+                                id="enderecoComplemento"
+                                placeholder="Casa, apartamento..."
+                            >
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- PAGAMENTO -->
+                <section class="checkout-section">
+
+                    <h3>
+                        4. Pagamento
+                    </h3>
+
+                    <div class="payment-options">
+
+                        <label>
+
+                            <input
+                                type="radio"
+                                name="pagamento"
+                                value="pix"
+                                checked
+                            >
+
+                            <span>
+
+                                <strong>
+                                    PIX
+                                </strong>
+
+                                <small>
+                                    Pagamento via PIX
+                                </small>
+
+                            </span>
+
+                        </label>
+
+
+                        <label>
+
+                            <input
+                                type="radio"
+                                name="pagamento"
+                                value="dinheiro"
+                            >
+
+                            <span>
+
+                                <strong>
+                                    Dinheiro
+                                </strong>
+
+                                <small>
+                                    Informe o valor para troco
+                                </small>
+
+                            </span>
+
+                        </label>
+
+
+                        <label>
+
+                            <input
+                                type="radio"
+                                name="pagamento"
+                                value="cartao_credito"
+                            >
+
+                            <span>
+
+                                <strong>
+                                    Cartão de crédito
+                                </strong>
+
+                                <small>
+                                    Pagamento na entrega
+                                </small>
+
+                            </span>
+
+                        </label>
+
+
+                        <label>
+
+                            <input
+                                type="radio"
+                                name="pagamento"
+                                value="cartao_debito"
+                            >
+
+                            <span>
+
+                                <strong>
+                                    Cartão de débito
+                                </strong>
+
+                                <small>
+                                    Pagamento na entrega
+                                </small>
+
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div
+                        class="form-group hidden"
+                        id="campoTroco"
+                    >
+
+                        <label for="trocoPara">
+                            Troco para quanto?
+                        </label>
+
+                        <input
+                            type="number"
+                            id="trocoPara"
+                            min="0"
+                            step="0.01"
+                            placeholder="Ex.: 100,00"
+                        >
+
+                    </div>
+
+                </section>
+
+
+                <!-- CUPOM -->
+                <section class="checkout-section">
+
+                    <h3>
+                        5. Cupom de desconto
+                    </h3>
+
+                    <div class="coupon-form">
+
+                        <input
+                            type="text"
+                            id="codigoCupom"
+                            placeholder="Digite seu cupom"
+                            autocomplete="off"
+                        >
+
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            id="btnAplicarCupom"
+                        >
+                            Aplicar
+                        </button>
+
+                    </div>
+
+                    <div
+                        class="coupon-message"
+                        id="mensagemCupom"
+                    ></div>
+
+                </section>
+
+
+                <!-- OBSERVAÇÕES -->
+                <section class="checkout-section">
+
+                    <h3>
+                        6. Observações
+                    </h3>
+
+                    <div class="form-group">
+
+                        <textarea
+                            id="observacoesPedido"
+                            rows="3"
+                            placeholder="Ex.: retirar cebola, tocar campainha..."
+                        ></textarea>
+
+                    </div>
+
+                </section>
+
+
+                <!-- RESUMO -->
+                <section class="checkout-summary">
+
+                    <h3>
+                        Resumo do pedido
+                    </h3>
+
+                    <div id="resumoCheckout">
+                        <!-- Resumo inserido pelo JavaScript -->
+                    </div>
+
+                    <div class="checkout-total">
+
+                        <span>
+                            Total
+                        </span>
+
+                        <strong id="totalCheckout">
+                            R$ 0,00
+                        </strong>
+
+                    </div>
+
+                </section>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary btn-full btn-confirm-order"
+                >
+                    Confirmar pedido
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MODAL PEDIDO REALIZADO
+    ========================== -->
+    <div
+        class="modal hidden"
+        id="modalPedidoSucesso"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="pedidoSucessoTitulo"
+    >
+
+        <div class="modal-overlay"></div>
+
+        <div class="modal-content success-modal">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2 id="pedidoSucessoTitulo">
+                Pedido realizado com sucesso!
+            </h2>
+
+            <p>
+                Obrigado pelo seu pedido ❤️
+            </p>
+
+            <div class="order-code-box">
+
+                <small>
+                    Código do pedido
+                </small>
+
+                <strong id="codigoPedidoGerado">
+                    BP-000000
+                </strong>
+
+            </div>
+
+            <p class="success-instruction">
+                Guarde esse código para acompanhar o andamento
+                do seu pedido.
+            </p>
+
+            <div class="success-actions">
+
+                <button
+                    type="button"
+                    class="btn btn-whatsapp"
+                    id="btnWhatsAppSucesso"
+                >
+                    Enviar pedido pelo WhatsApp
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="btnRastrearPedidoSucesso"
+                >
+                    Rastrear pedido
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    id="btnFecharSucesso"
+                >
+                    Fechar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MODAL DE SELEÇÃO DE SABORES
+    ========================== -->
+    <div class="modal hidden" id="modalSabores" role="dialog" aria-modal="true" aria-labelledby="nomeProdutoSabor">
+        <div class="modal-overlay" data-fechar-modal></div>
+        <div class="modal-content flavor-modal">
+            <button type="button" class="btn-close-modal" data-fechar-modal aria-label="Fechar">×</button>
+            <div class="flavor-modal-header">
+                <span class="section-label">Opção de sabor</span>
+                <h2 id="nomeProdutoSabor">Produto</h2>
+                <p>Escolha um sabor para continuar.</p>
+            </div>
+            <div id="listaSaboresContainer" class="flavor-options"></div>
+            <div id="erroSaborModal" class="coupon-message error hidden">Escolha um sabor para continuar.</div>
+            <div class="flavor-modal-footer">
+                <button type="button" class="btn btn-secondary" data-fechar-modal>Cancelar</button>
+                <button type="button" class="btn btn-primary btn-full" id="btnConfirmarSabor">Adicionar ao carrinho</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================
+         TOAST
+    ========================== -->
+    <div
+        class="toast"
+        id="toast"
+        role="status"
+        aria-live="polite"
+    >
+        <span id="toastMensagem"></span>
+    </div>
+
+
+    <!-- =========================
+         MODAL MEUS PEDIDOS
+    ========================== -->
+    <div
+        class="modal hidden"
+        id="modalMeusPedidos"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="meusPedidosTitulo"
+    >
+
+        <div class="modal-overlay"></div>
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h2 id="meusPedidosTitulo">
+                    Meus Pedidos
+                </h2>
+
+                <button
+                    type="button"
+                    class="btn-close-modal"
+                    id="btnFecharMeusPedidos"
+                >
+                    ×
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div id="listaMeusPedidos" class="my-orders-list">
+                    <!-- Pedidos inseridos pelo JavaScript -->
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+    <script src="script.js"></script>
+
+</body>
+</html>
